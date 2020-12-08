@@ -1,12 +1,14 @@
 import models
 
+# This is like a route in an Exprees application
 from flask import Blueprint, jsonify, request
 
+# Playhouse is part of PeeWee.  Converts data from DB to a dictionary (in this case).  There are also other options like 'model to list'
 from playhouse.shortcuts import model_to_dict
 
 
 # first argument is blueprints name
-# second argument is it's import_name
+# second argument is it's import_name.  It is used to import this into other files.  Not as straight forward as Node.
 song = Blueprint('songs', 'song')
 
 # Get (index route)
