@@ -2,6 +2,7 @@ import models
 
 # This is like a route in an Exprees application
 from flask import Blueprint, jsonify, request
+from flask_login import current_user, login_required
 
 # Playhouse is part of PeeWee.  Converts data from DB to a dictionary (in this case).  There are also other options like 'model to list'
 from playhouse.shortcuts import model_to_dict
@@ -27,6 +28,8 @@ def get_all_songs():
 
 # Show Route
 @song.route('/<id>', methods=["GET"])
+# This will ensure only a logged in user can get to this route
+@login_required 
 def get_one_song(id):
     print(id, 'reserved word?')
     song = models.Song.get_by_id(id)
